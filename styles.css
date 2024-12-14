@@ -1,0 +1,821 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+    --primary: #D48166;
+    --btn: #8bb09c;
+    --btn-hover: #77af96;
+    --btn-2-hover: #d46a66;
+    --footer: #3E4059;
+    --black: #000;
+    --white: #fff;
+    --gray: #ccc8c8;
+    --bg1: #f9f9f9
+}
+
+/* ---------------------------
+   Estilos para INDEX
+--------------------------- */
+.grid-container-index {
+    display: grid;
+    grid-template-areas:
+        'header'
+        'filtros'
+        'products'
+        'pagination'
+        'footer';
+}
+
+.header { grid-area: header; }
+.filtros { grid-area: filtros; }
+.main-index { grid-area: products; }
+.pagination { grid-area: pagination; }
+.footer { grid-area: footer; }
+
+@media (min-width: 560px) {
+    .grid-container-index {
+        display: grid;
+        grid-template-areas:
+            'header header'
+            'filtros products'
+            'filtros products'
+            'pagination pagination'
+            'footer footer';
+    }
+
+    .header { grid-area: header; }
+    .filtros { grid-area: filtros; }
+    .main-index { grid-area: products; }
+    .pagination { grid-area: pagination; }
+    .footer { grid-area: footer; }
+}
+
+/* HEADER */
+.nav-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0px;
+}
+.nav-principal a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 600;
+    font-size: 17px;
+    padding: 10px 0px;
+}
+
+.nav-secundario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0px;
+}
+.nav-secundario a {
+    text-decoration: none;
+    color: var(--black);
+}
+.nav-secundario a:nth-child(1) {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.nav-secundario form {
+    text-align: center;
+    margin: 10px 0px;
+    width: 100%;
+}
+.nav-secundario input {
+    width: 80%;
+    padding: 10px;
+    border: 2px var(--gray) solid;
+    border-radius: 5px;
+}
+.nav-secundario button {
+    display: inline-block;
+    border: none;
+    padding: 5px;
+    background-color: var(--white);
+    cursor: pointer;
+}
+
+.nav-secundario__iconos {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.nav-secundario__iconos a {
+    font-size: 25px;
+}
+
+.nav-categorias {
+    background-color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-categorias a {
+    padding: 10px 0px;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 17px;
+    font-weight: 600;
+}
+
+@media (min-width: 560px) {
+    .nav-principal {
+        flex-direction: row;
+        padding: 0px 80px;
+        justify-content: flex-end;
+    }
+    .nav-principal a { margin-left: 40px;}
+
+    .nav-secundario {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 0px 80px;
+    }
+    .nav-secundario a:nth-child(1) { flex-grow: 1; }
+    .nav-secundario form {
+        margin: 0px;
+        flex-grow: 2;
+    }
+    .nav-secundario__iconos {
+        flex-grow: 1;
+        justify-content: flex-end;
+        width: auto;
+    }
+    .nav-secundario__iconos a { margin-left: 15px; }
+
+    .nav-categorias {
+        flex-direction: row;
+        padding: 0px 80px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .nav-categorias a { padding-right: 80px; }
+}
+
+/*aside: filtros*/
+.filtros {
+    padding: 20px 20px 0px 0px;
+    margin: 0px 10px;
+}
+
+.filtros a {
+    text-decoration: none;
+    color:var(--black);
+}
+.filtros ul { list-style-type: none; }
+.filtros li a:hover { color: var(--primary); }
+.filtros p { font-size: 17px; font-weight: 600;}
+
+.filtros__orden {
+    padding: 10px;
+    border: 2px var(--gray) solid;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.filtros__categoria li,
+.filtros__categoria p { padding: 10px 0px; }
+
+.filtros__precio p { padding: 10px 0px; }
+.filtros__precio form {
+    display: flex;
+    flex-direction: column;
+}
+.filtros__precio input {
+    padding: 10px;
+    border: 2px var(--gray) solid;
+    border-radius: 5px;
+    margin: 10px 0px;
+}
+.filtros__precio button {
+    background-color: var(--btn);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    margin-top: 10px;
+    transition-duration: 0.8s;
+}
+.filtros__precio button:hover {
+    background-color: var(--btn-hover);
+}
+
+.filtros__color li,
+.filtros__color p { padding: 10px 0px; }
+
+@media (min-width: 560px) {
+    .filtros {
+        padding: 20px 20px 0px 0px;
+        margin-left: 80px;
+        width: 15vw;
+    }
+    .filtros__orden {
+        padding: 10px;
+        border: 2px var(--gray) solid;
+        border-radius: 5px;
+    }
+    .filtros__categoria {
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .filtros__precio { margin-top: 20px; width: 100%;}
+    .filtros__color{ margin-top: 20px; width: 100%;}
+}
+
+/* productos de la tienda */
+.main-index {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px 0 0 10px;
+}
+
+.producto__titulo {
+    font-size: 20px;
+    margin: 10px 0px;
+    font-weight: 600;
+    text-align: center;
+}
+.producto__caracteristicas { margin: 10px 0px; }
+.producto__caracteristicas p {padding: 5px 0px;}
+.producto__caracteristicas p:nth-child(1) { text-align: center; font-size: 20px;}
+
+.producto { position: relative; }
+.producto figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.producto img {
+    width: 200px;
+}
+.producto__carrito { margin: 10px 0px; }
+.producto__carrito button{
+    background-color: var(--btn);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    transition-duration: 0.8s;
+    width: 75%;
+}
+.producto input {
+    padding: 10px;
+    border: 2px var(--gray) solid;
+    border-radius: 5px;
+    width: 23%;
+}
+
+.producto__deseos button {
+    background-color: var(--white);
+    padding: 10px;
+    cursor: pointer;
+    border: 2px var(--gray) solid;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+@media (min-width: 480px) {
+    .main-index {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        padding: 20px 0 0 10px;
+    }
+}
+
+@media (min-width: 560px) {
+    .main-index {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        padding: 20px 80px 0 20px;
+    }
+}
+
+/*paginacion del index*/
+.pagination ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 40px 0;
+}
+.pagination li {
+    border: 2px var(--gray) solid;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.pagination a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/*FOOTER*/
+.footer {
+    background-color: var(--footer);
+    color: var(--white);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.footer p {
+    text-align: center;
+    padding: 10px;
+}
+.footer__redes a{
+    font-size: 30px;
+    color: var(--white);
+    margin-left: 20px;
+}
+
+@media (min-width: 560px) {
+    .footer {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .footer p {
+        text-align: left;
+    }
+}
+
+
+/* ---------------------------
+   Estilos para CARRITO
+--------------------------- */
+.grid-container-carrito {
+    display: grid;
+    grid-template-areas:
+    'header'
+    'carrito'
+    'footer';
+}
+.header { grid-area: header; }
+.main-carrito { grid-area: carrito;}
+.footer { grid-area: footer; }
+
+.main-carrito {
+    display: flex;
+    flex-direction: column;
+}
+.main-carrito table { margin-top: 20px; }
+.main-carrito table thead {
+    display: none;
+}
+.main-carrito table tbody tr {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--gray);
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.main-carrito table tbody td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0;
+}
+.main-carrito table tbody td img {
+    width: 50%;
+}
+.main-carrito form {
+    text-align: center;
+}
+
+.carrito__eliminar button {
+    background-color: var(--white);
+    border: none;
+    font-size: large;
+    cursor: pointer;
+}
+
+.carrito__actualizar button,
+.carrito__confirmar button {
+    background-color: var(--btn);
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    transition-duration: 0.8s;
+}
+.carrito__actualizar button:hover {
+    background-color: var(--btn-hover);
+}
+.carrito__actualizar input {
+    padding: 8px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    width: 25%;
+}
+
+.main-carrito h3 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.main-carrito div {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.carrito__continuar a {
+    text-decoration: none;
+    background-color: var(--gray);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--white);
+    cursor: pointer;
+    transition-duration: 0.8s;
+    display: inline-block;
+}
+
+@media (min-width: 560px) {
+    .main-carrito table {
+        display: table;
+        margin: 0 80px;
+        border-collapse: collapse;
+    }
+    .main-carrito table thead {
+        display: table-header-group;
+    }
+    .main-carrito table tbody tr {
+        display: table-row;
+        margin: 0;
+        border: none;
+        padding: 0;
+    }
+    .main-carrito table tbody td {
+        display: table-cell;
+        padding: 20px 10px;
+        text-align: center;
+        border-top: 2px solid var(--gray);
+    }
+    .main-carrito table tbody td img {
+        width: 200px;
+    }
+
+    .carrito__confirmar {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-end;
+    }
+
+}
+/* ---------------------------
+   Estilos para Inicio de Sesión
+--------------------------- */
+.main-login {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg1);
+}
+
+.login-section {
+    margin: 40px auto;
+    max-width: 400px;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.login-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--black);
+}
+
+.login-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-section label {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-section input[type="email"],
+.login-section input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-section input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.login-section button {
+    background-color: var(--btn);
+    color: var(--white);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.login-section button:hover {
+    background-color: var(--btn-hover);
+}
+
+.login-section a {
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+
+.login-section a:hover {
+    text-decoration: underline;
+}
+
+/* opción de registro en la página de inicio de sesión*/
+.register-section {
+    margin: 40px auto;
+    max-width: 400px;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-section h2 {
+    margin-bottom: 15px;
+    color: var(--black);
+}
+
+.register-section p {
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: var(--black);
+}
+
+.register-section button {
+    background-color: var(--btn);
+    color: var(--white);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.register-section button:hover {
+    background-color: var(--btn-hover);
+}
+
+@media (min-width: 768px) {
+    .main-login{
+        flex-direction: row;
+        align-items: center;
+        gap: 50px;
+    }
+    .main-login section {
+        width: 50%
+    }
+}
+
+/* ---------------------------
+   Estilos para Finalizar Pedido
+--------------------------- */
+
+.main-pedido { padding: 10px; }
+.main-pedido div div section:first-child { line-height: 30px; }
+.finalizar-pedido section {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.finalizar-pedido h4 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.finalizar-pedido form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.finalizar-pedido label {
+    font-size: 16px;
+    color: var(--black);
+    line-height: 30px;
+}
+
+.finalizar-pedido input {
+    padding: 10px;
+    border: 1px solid var(--gray);
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.finalizar-pedido button {
+    background-color: var(--btn);
+    color: var(--white);
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 200px;
+    width: auto;
+    font-size: 14px;
+}
+
+.finalizar-pedido button:hover {
+    background-color: var(--btn-hover);
+}
+
+.finalizar-pedido .confirmar-pedido {
+    border: none;
+    box-shadow: none;
+    margin-top: 20px;
+    padding: 10px;
+    background: none;
+}
+
+.finalizar-pedido .confirmar-pedido button {
+    background-color: var(--primary);
+    border: none;
+    color: var(--white);
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    width: auto;
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.finalizar-pedido .confirmar-pedido button:hover {
+    background-color: var(--btn-2-hover);
+}
+
+
+.finalizar-pedido .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.finalizar-pedido .form-group input {
+    width: 100%;
+}
+
+/* ---------------------------
+   Estilos para REGISTRO
+--------------------------- */
+/* Estilos para la sección principal */
+.main-registro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    background-color: var(--bg1);
+}
+/* Estilos para el formulario de registro */
+.main-registro form {
+    width: 400px;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+/* Encabezados */
+.main-registro form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+/* Campos de entrada */
+.main-registro form div {
+    margin-bottom: 15px;
+}
+.main-registro form label {
+    display: block;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+.main-registro form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid var(--gray);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+/* Indicador de contraseña */
+.main-registro form small {
+    color: #999;
+}
+#password-strength-bar {
+    height: 5px;
+    background-color: var(--btn);
+    margin-top: 5px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Botones */
+.main-registro form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--btn);
+    color: var(--white);
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.main-registro form button:hover {
+    background-color: var(--btn-hover);
+}
+/* opcion de iniciar sesión en el registro.html*/
+.main-registro form:nth-child(2) {
+    background-color: var(--white);
+    width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.main-registro form:nth-child(2) button {
+    background-color: var(--btn);
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.main-registro form:nth-child(2) button:hover {
+    background-color: var(--btn-hover);
+}
+
+/* Texto */
+.main-registro form p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.main-registro form p a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.main-registro form p a:hover {
+    text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+    .main-registro {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Página para finalizar pedido">
+        <title>Petshop</title>
+        <link rel="stylesheet" href="styles.css">
+        <!-- íconos -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
+
+    <body class="grid-container-index">
+
+        <!-- Encabezado principal -->
+        <header class="header">
+            <nav class="nav-principal">
+                <a href="index.html">Inicio</a>
+                <a href="index.html">Productos</a>
+                <a href="#">Nosotros</a>
+                <a href="#">Blog</a>
+            </nav>
+
+            <nav class="nav-secundario">
+                <a href="index.html">PetShop</a>
+
+                <form action="" method="POST">
+                    <input placeholder="Buscar" name="textoIngresado">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+
+                <div class="nav-secundario__iconos">
+                    <a href="inicio-sesion.html"><i class="bi bi-person"></i></a>
+                    <a href="#"><i class="bi bi-heart"></i></a>
+                    <a href="carrito.html"><i class="bi bi-cart3"></i></a>
+                </div>
+            </nav>
+
+            <nav class="nav-categorias">
+                <a href="">Perro</a>
+                <a href="">Gato</a>
+                <a href="">Conejo</a>
+                <a href="">Promociones</a>
+            </nav>
+        </header>
+
+        <!-- Filtros -->
+        <aside class="filtros">
+
+            <select name="" id="" class="filtros__orden">
+                <option value="">Ordenar alfabeticamente</option>
+                <option value="">Ordenar por precio de menor a mayor</option>
+                <option value="">Ordenar por precio de mayor a menor</option>
+            </select>
+
+            <div class="filtros__categoria">
+                <p>Categorias</p>
+                <ul>
+                    <li><a href="">Perro</a></li>
+                    <li><a href="">Gato</a></li>
+                    <li><a href="">Conejo</a></li>
+                </ul>
+            </div>
+
+            <div class="filtros__precio">
+                <p>Filtrar por precio</p>
+                <form action="" method="">
+                    <label for="min">Mín</label>
+                    <input type="number" name="min">
+                    <label for="max">Max</label>
+                    <input type="number" name="max">
+                    <button >Filtrar</button>
+                </form>
+            </div>
+
+            <div class="filtros__color">
+                <p>Filtrar por color</p>
+                <ul>
+                    <li><a href="">Rojo</a></li>
+                    <li><a href="">Azul</a></li>
+                    <li><a href="">Celeste</a></li>
+                    <li><a href="">Blanco</a></li>
+                    <li><a href="">Marron</a></li>
+                </ul>
+            </div>
+
+        </aside>
+
+        <!-- Contenido principal: Productos de la tienda -->
+        <main class="main-index">
+            <div class="producto">
+                <figure>
+                    <img src="https://www.cochikis.pe/wp-content/uploads/2022/07/alfombracognitiva1.jpg" alt="alfombra cognitiva">
+                    <figcaption class="producto__titulo">Alfombra Cognitiva Estrella</figcaption>
+                </figure>
+
+                <div class="producto__caracteristicas">
+                    <p>S/. 129.00</p>
+                    <p>Categoria: Perro</p>
+                    <p>Color: Rojo</p>
+                    <p>Estimula las habilidades cognitivas de tu mascota con nuestra alfombra cognitiva estrella que
+                        posee capas para esconder treats y estimular el instinto de
+                        rastreo y olfato.</p>
+                </div>
+
+                <!-- Agregar a la lista de deseos -->
+                <form method="" action="" class="producto__deseos">
+                    <button>
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                </form>
+
+                <!-- Agregar al carrito -->
+                <form method="" action="/carrito.html" class="producto__carrito">
+                    <!-- Cantidad -->
+                    <input type="number" id="cantidad" min="1" step="1" name="cantidad" value="1"/>
+                    <button type="submit">Agregar al Carrito</button>
+                </form>
+
+            </div>
+
+            <div class="producto">
+
+                <figure>
+                    <img src="https://www.cochikis.pe/wp-content/uploads/2023/04/accecan-collar-corbatita-michi-miniflores.jpg" alt="collar">
+                    <figcaption class="producto__titulo">Accecan Collar Michi Flores Mini</figcaption>
+                </figure>
+
+                <div class="producto__caracteristicas">
+                    <p>S/. 15.00</p>
+                    <p>Categoria: Gato</p>
+                    <p>Color: Celeste</p>
+                    <p>Este pequeño detalle no solo añade un toque de encanto, sino que también te permite mantener 
+                        un seguimiento de los movimientos de tu gato en todo momento.</p>
+                </div>
+
+                <!-- Agregar a la lista de deseos -->
+                <form method="" action="" class="producto__deseos">
+                    <button>
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                </form>
+
+                <!-- Agregar al carrito -->
+                <form method="" action="/carrito.html" class="producto__carrito">
+                    <input type="number" id="cantidad" min="1" step="1" name="cantidad" value="1"/>
+                    <button type="submit">Agregar al Carrito</button>
+                </form>
+
+            </div>
+
+            <div class="producto">
+                <figure>
+                    <img src="https://www.cochikis.pe/wp-content/uploads/2022/07/alfombracognitiva1.jpg" alt="alfombra cognitiva">
+                    <figcaption class="producto__titulo">Alfombra Cognitiva Estrella</figcaption>
+                </figure>
+
+                <div class="producto__caracteristicas">
+                    <p>S/. 129.00</p>
+                    <p>Categoria: Perro</p>
+                    <p>Color: Rojo</p>
+                    <p>Estimula las habilidades cognitivas de tu mascota con nuestra alfombra cognitiva estrella que
+                        posee capas para esconder treats y estimular el instinto de
+                        rastreo y olfato.</p>
+                </div>
+
+                <!-- Agregar a la lista de deseos -->
+                <form method="" action="" class="producto__deseos">
+                    <button>
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                </form>
+
+                <!-- Agregar al carrito -->
+                <form method="" action="/carrito.html" class="producto__carrito">
+                    <!-- Cantidad -->
+                    <input type="number" id="cantidad" min="1" step="1" name="cantidad" value="1"/>
+                    <button type="submit">Agregar al Carrito</button>
+                </form>
+
+            </div>
+
+            <div class="producto">
+
+                <figure>
+                    <img src="https://www.cochikis.pe/wp-content/uploads/2023/04/accecan-collar-corbatita-michi-miniflores.jpg" alt="collar">
+                    <figcaption class="producto__titulo">Accecan Collar Michi Flores Mini</figcaption>
+                </figure>
+
+                <div class="producto__caracteristicas">
+                    <p>S/. 15.00</p>
+                    <p>Categoria: Gato</p>
+                    <p>Color: Celeste</p>
+                    <p>Este pequeño detalle no solo añade un toque de encanto, sino que también te permite mantener 
+                        un seguimiento de los movimientos de tu gato en todo momento.</p>
+                </div>
+
+                <!-- Agregar a la lista de deseos -->
+                <form method="" action="" class="producto__deseos">
+                    <button>
+                        <i class="bi bi-heart-fill"></i>
+                    </button>
+                </form>
+
+                <!-- Agregar al carrito -->
+                <form method="" action="/carrito.html" class="producto__carrito">
+                    <input type="number" id="cantidad" min="1" step="1" name="cantidad" value="1"/>
+                    <button type="submit">Agregar al Carrito</button>
+                </form>
+
+            </div>
+        </main>
+
+        <!-- Paginacion -->
+        <section class="pagination">
+            <ul>
+                <li>
+                    <a href="">1</a>
+                </li>
+                <li>
+                    <a href="">2</a>
+                </li>
+                <li>
+                    <a href="">3</a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Pie de página -->
+        <footer class="footer">
+            <div>
+                <p>Av. Brasil 210, Breña</p>
+                <p>Teléfono: 920 000 965</p>
+                <p>Correo: ventas@petshop.pe</p>
+                <p>Horario de atención: Lunes a Sábado de 9:00 am a 7:30 pm</p>
+            </div>
+            <div class="footer__redes">
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-whatsapp"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+            </div>
+
+        </footer>
+
+    </body>
+</html>

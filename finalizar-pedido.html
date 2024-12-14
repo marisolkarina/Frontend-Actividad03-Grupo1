@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Página para finalizar pedido">
+        <title>Finalizar Pedido</title>
+        <link rel="stylesheet" href="styles.css">
+        <!-- íconos -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
+
+    <body>
+        <!-- Encabezado principal -->
+        <header class="header">
+            <nav class="nav-principal">
+                <a href="index.html">Inicio</a>
+                <a href="index.html">Productos</a>
+                <a href="#">Nosotros</a>
+                <a href="#">Blog</a>
+            </nav>
+
+            <nav class="nav-secundario">
+                <a href="index.html">PetShop</a>
+
+                <form action="" method="POST">
+                    <input placeholder="Buscar" name="textoIngresado">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+
+                <div class="nav-secundario__iconos">
+                    <a href="inicio-sesion.html"><i class="bi bi-person"></i></a>
+                    <a href="#"><i class="bi bi-heart"></i></a>
+                    <a href="carrito.html"><i class="bi bi-cart3"></i></a>
+                </div>
+            </nav>
+
+            <nav class="nav-categorias">
+                <a href="">Perro</a>
+                <a href="">Gato</a>
+                <a href="">Conejo</a>
+                <a href="">Promociones</a>
+            </nav>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="main-pedido">
+            <div class="finalizar-pedido">
+                <div>
+                    <section>
+                        <h4>Detalles del pedido</h4>
+                        <p>Id pedido: 123456789</p>
+                        <p>Fecha de pedido: 28/11/24</p>
+                        <p>Estado del pedido: pendiente</p>
+                        <p>Fecha de entrega: 02/12/24</p>
+                        <div>
+                            <p>Productos del pedido: </p>
+                            <p>Alfombra Cognitiva Estrella (1)</p>
+                            <p>Accecan Collar Michi Flores Mini (2)</p>
+                        </div>
+                        <p>Precio total: S/. 159.00</p>
+                    </section>
+
+                    <!-- Información Personal -->
+                    <section>
+                        <h4>Información Personal</h4>
+                        <form action="" method="POST">
+                            <div>
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div>
+                                <label for="apellido">Apellido:</label>
+                                <input type="text" id="apellido" name="apellido" required>
+                            </div>
+                            <div>
+                                <label for="dni">DNI:</label>
+                                <input type="text" id="dni" name="dni" required>
+                            </div>
+                            <button type="submit">Guardar</button>
+                        </form>
+                    </section>
+
+                    <!-- Datos de Envío -->
+                    <section>
+                        <h4>Datos de Envío</h4>
+                        <form action="" method="POST">
+                            <div>
+                                <label for="direccion">Dirección de Envío:</label>
+                                <input type="text" id="direccion" name="direccion" required>
+                            </div>
+                            <div>
+                                <label for="pais">País:</label>
+                                <input type="text" id="pais" name="pais" required>
+                            </div>
+                            <div>
+                                <label for="region">Región:</label>
+                                <input type="text" id="region" name="region" required>
+                            </div>
+                            <div>
+                                <label for="ciudad">Ciudad:</label>
+                                <input type="text" id="ciudad" name="ciudad" required>
+                            </div>
+                            <div>
+                                <label for="codigo-postal">Código Postal:</label>
+                                <input type="text" id="codigo-postal" name="codigo-postal" required>
+                            </div>
+                            <div>
+                                <label for="telefono">Teléfono de Contacto:</label>
+                                <input type="tel" id="telefono" name="telefono" required>
+                            </div>
+                            <button type="submit">Guardar</button>
+                        </form>
+                    </section>
+
+                    <!-- Información de Pago -->
+                    <section>
+                        <h4>Información de Pago</h4>
+                        <form action="" method="POST">
+                            <div>
+                                <label for="numero-tarjeta">Número de Tarjeta:</label>
+                                <input type="text" id="numero-tarjeta" name="numero-tarjeta" required>
+                            </div>
+                            <div>
+                                <label for="fecha-vencimiento">Fecha de Vencimiento:</label>
+                                <input type="month" id="fecha-vencimiento" name="fecha-vencimiento" required>
+                            </div>
+                            <div>
+                                <label for="cvv">CVV:</label>
+                                <input type="text" id="cvv" name="cvv" required>
+                            </div>
+                            <div>
+                                <label for="nombre-tarjeta">Nombres del Titular:</label>
+                                <input type="text" id="nombre-tarjeta" name="nombre-tarjeta" required>
+                            </div>
+                            <div>
+                                <label for="apellido-tarjeta">Apellidos del Titular:</label>
+                                <input type="text" id="apellido-tarjeta" name="apellido-tarjeta" required>
+                            </div>
+                            <div>
+                                <label for="correo">Correo Electrónico:</label>
+                                <input type="email" id="correo" name="correo" required>
+                            </div>
+                            <button type="submit">Guardar</button>
+                        </form>
+                    </section>
+
+                    <!-- Confirmar Pedido -->
+                    <section class="confirmar-pedido">
+                        <form action="" method="POST">
+                            <button type="submit">Confirmar Pedido</button>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <!-- Pie de página -->
+        <footer class="footer">
+            <div>
+                <p>Av. Brasil 210, Breña</p>
+                <p>Teléfono: 920 000 965</p>
+                <p>Correo: ventas@petshop.pe</p>
+                <p>Horario de atención: Lunes a Sábado de 9:00 am a 7:30 pm</p>
+            </div>
+            <div class="footer__redes">
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-whatsapp"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+            </div>
+        </footer>
+
+    </body>
+</html>
