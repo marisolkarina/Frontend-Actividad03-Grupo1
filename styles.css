@@ -35,7 +35,7 @@
 .pagination { grid-area: pagination; }
 .footer { grid-area: footer; }
 
-@media (min-width: 560px) {
+@media (min-width: 768px) {
     .grid-container-index {
         display: grid;
         grid-template-areas:
@@ -126,7 +126,7 @@
     font-weight: 600;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 768px) {
     .nav-principal {
         flex-direction: row;
         padding: 0px 80px;
@@ -213,7 +213,7 @@
 .filtros__color li,
 .filtros__color p { padding: 10px 0px; }
 
-@media (min-width: 560px) {
+@media (min-width: 768px) {
     .filtros {
         padding: 20px 20px 0px 0px;
         margin-left: 80px;
@@ -278,17 +278,8 @@
     width: 23%;
 }
 
-.producto__deseos button {
-    background-color: var(--white);
-    padding: 10px;
-    cursor: pointer;
-    border: 2px var(--gray) solid;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
 
-@media (min-width: 480px) {
+@media (min-width: 768px) {
     .main-index {
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -296,7 +287,7 @@
     }
 }
 
-@media (min-width: 560px) {
+@media (min-width: 1200px) {
     .main-index {
         grid-template-columns: 1fr 1fr 1fr;
         gap: 20px;
@@ -342,7 +333,7 @@
     margin-left: 20px;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 768px) {
     .footer {
         flex-direction: row;
         justify-content: space-around;
@@ -446,7 +437,7 @@
     display: inline-block;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 768px) {
     .main-carrito table {
         display: table;
         margin: 0 80px;
