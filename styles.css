@@ -170,6 +170,7 @@
 .filtros a {
     text-decoration: none;
     color:var(--black);
+    cursor: pointer;
 }
 .filtros ul { list-style-type: none; }
 .filtros li a:hover { color: var(--primary); }

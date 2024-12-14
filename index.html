@@ -45,47 +45,48 @@
         <!-- Filtros -->
         <aside class="filtros">
 
-            <select name="" id="" class="filtros__orden">
-                <option value="">Ordenar alfabeticamente</option>
-                <option value="">Ordenar por precio de menor a mayor</option>
-                <option value="">Ordenar por precio de mayor a menor</option>
+            <select id="ordenar" class="filtros__orden" onchange="obtenerOrden()">
+                <option>Seleccione orden</option>
+                <option value="1">Ordenar alfabeticamente</option>
+                <option value="2">Ordenar por precio de menor a mayor</option>
+                <option value="3">Ordenar por precio de mayor a menor</option>
             </select>
 
             <div class="filtros__categoria">
                 <p>Categorias</p>
                 <ul>
-                    <li><a href="">Perro</a></li>
-                    <li><a href="">Gato</a></li>
-                    <li><a href="">Conejo</a></li>
+                    <li><a onclick="filtrarPorCategoria('perro')">Perro</a></li>
+                    <li><a onclick="filtrarPorCategoria('gato')">Gato</a></li>
+                    <li><a onclick="filtrarPorCategoria('conejo')">Conejo</a></li>
                 </ul>
             </div>
 
             <div class="filtros__precio">
                 <p>Filtrar por precio</p>
-                <form action="" method="">
+                <!-- <form action="" method=""> -->
                     <label for="min">Mín</label>
-                    <input type="number" name="min">
+                    <input type="number" name="precio">
                     <label for="max">Max</label>
-                    <input type="number" name="max">
-                    <button >Filtrar</button>
-                </form>
+                    <input type="number" name="precio">
+                    <button onclick="filtrarPorPrecio()">Filtrar</button>
+                <!-- </form> -->
             </div>
 
             <div class="filtros__color">
                 <p>Filtrar por color</p>
                 <ul>
-                    <li><a href="">Rojo</a></li>
-                    <li><a href="">Azul</a></li>
-                    <li><a href="">Celeste</a></li>
-                    <li><a href="">Blanco</a></li>
-                    <li><a href="">Marron</a></li>
+                    <li><a onclick="filtrarPorColor('rojo')">Rojo</a></li>
+                    <li><a onclick="filtrarPorColor('azul')">Azul</a></li>
+                    <li><a onclick="filtrarPorColor('celeste')">Celeste</a></li>
+                    <li><a onclick="filtrarPorColor('blanco')">Blanco</a></li>
+                    <li><a onclick="filtrarPorColor('marron')">Marron</a></li>
                 </ul>
             </div>
 
         </aside>
 
         <!-- Contenido principal: Productos de la tienda -->
-        <main class="main-index">
+        <main class="main-index" id="misProductos">
             <div class="producto">
                 <figure>
                     <img src="https://www.cochikis.pe/wp-content/uploads/2022/07/alfombracognitiva1.jpg" alt="alfombra cognitiva">
@@ -101,9 +102,7 @@
                         rastreo y olfato.</p>
                 </div>
 
-                <!-- Agregar al carrito -->
                 <form method="" action="/carrito.html" class="producto__carrito">
-                    <!-- Cantidad -->
                     <input type="number" id="cantidad" min="1" step="1" name="cantidad" value="1"/>
                     <button type="submit">Agregar producto</button>
                 </form>
@@ -125,60 +124,33 @@
                         un seguimiento de los movimientos de tu gato en todo momento.</p>
                 </div>
 
-                <!-- Agregar al carrito -->
                 <form method="" action="/carrito.html" class="producto__carrito">
                     <input type="number" id="cantidad" min="1" step="1" name="cantidad" value="1"/>
-                    <button type="submit">Agregar al Carrito</button>
+                    <button type="submit">Agregar al producto</button>
                 </form>
 
             </div>
 
             <div class="producto">
                 <figure>
-                    <img src="https://www.cochikis.pe/wp-content/uploads/2022/07/alfombracognitiva1.jpg" alt="alfombra cognitiva">
-                    <figcaption class="producto__titulo">Alfombra Cognitiva Estrella</figcaption>
+                    <img src="https://www.cochikis.pe/wp-content/uploads/2023/09/ferplast-pelota-para-roedores-5cm.jpg" alt="pelota">
+                    <figcaption class="producto__titulo">Ferplast Ball With Bell 5.5 CM</figcaption>
                 </figure>
 
                 <div class="producto__caracteristicas">
-                    <p>S/. 129.00</p>
-                    <p>Categoria: Perro</p>
-                    <p>Color: Rojo</p>
-                    <p>Estimula las habilidades cognitivas de tu mascota con nuestra alfombra cognitiva estrella que
-                        posee capas para esconder treats y estimular el instinto de
-                        rastreo y olfato.</p>
+                    <p>S/. 13.00</p>
+                    <p>Categoria: Conejo</p>
+                    <p>Color: Marron</p>
+                    <p>Pelota de ingredientes naturales con un cascabel dentro. Sirve para reducir el crecimiento excesivo de los dientes.Este juego dental es ideal como pasatiempo.</p>
                 </div>
 
-                <!-- Agregar al carrito -->
                 <form method="" action="/carrito.html" class="producto__carrito">
-                    <!-- Cantidad -->
                     <input type="number" id="cantidad" min="1" step="1" name="cantidad" value="1"/>
-                    <button type="submit">Agregar al Carrito</button>
+                    <button type="submit">Agregar producto</button>
                 </form>
 
             </div>
 
-            <div class="producto">
-
-                <figure>
-                    <img src="https://www.cochikis.pe/wp-content/uploads/2023/04/accecan-collar-corbatita-michi-miniflores.jpg" alt="collar">
-                    <figcaption class="producto__titulo">Accecan Collar Michi Flores</figcaption>
-                </figure>
-
-                <div class="producto__caracteristicas">
-                    <p>S/. 15.00</p>
-                    <p>Categoria: Gato</p>
-                    <p>Color: Celeste</p>
-                    <p>Este pequeño detalle no solo añade un toque de encanto, sino que también te permite mantener 
-                        un seguimiento de los movimientos de tu gato en todo momento.</p>
-                </div>
-
-                <!-- Agregar al carrito -->
-                <form method="" action="/carrito.html" class="producto__carrito">
-                    <input type="number" id="cantidad" min="1" step="1" name="cantidad" value="1"/>
-                    <button type="submit">Agregar al Carrito</button>
-                </form>
-
-            </div>
         </main>
 
         <!-- Pie de página -->
@@ -196,6 +168,8 @@
             </div>
 
         </footer>
+
+        <script src="app.js"></script>
 
     </body>
 </html>
