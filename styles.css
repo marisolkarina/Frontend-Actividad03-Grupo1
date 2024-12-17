@@ -243,7 +243,7 @@ header {
 
 @media (min-width: 768px) {
     .filtros {
-        padding: 20px 20px 20px 0px;
+        padding: 20px 20px 20px 10px;
         width: 15vw;
     }
     .filtros__orden {
