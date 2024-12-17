@@ -237,6 +237,31 @@ class Carrito {
 
         return carrito;
     }
+
+    static actualizarCantidad (id, nuevaCantidadInput, producto) {
+
+        let miCarrito = JSON.parse(localStorage.getItem("carrito"));
+
+        const productoEditar = miCarrito.items.find(cp =>
+            cp.idProducto.toString() === id.toString()
+        );
+
+        const cantidadAnterior = productoEditar.cantidad;
+
+        // Actualizar la cantidad
+        productoEditar.cantidad = nuevaCantidadInput;
+
+        let precioProd = Number(producto.precio);
+
+        // Actualizar el precio total
+        miCarrito.precioTotal = miCarrito.precioTotal - (precioProd * cantidadAnterior) + (precioProd * nuevaCantidadInput);
+
+        carrito.items = miCarrito.items;
+        carrito.precioTotal = miCarrito.precioTotal;
+
+        return carrito;
+
+    }
 }
 
 function agregarMiProducto (id) {
@@ -257,8 +282,18 @@ function eliminarProducto (id) {
     //Guardando carrito en el local storage
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
-    document.getElementById(`prod${id}`).innerHTML = '';
-    document.getElementById("total").innerHTML = carrito.precioTotal;
+    mostrarCarrito(carrito);
+}
+
+function actualizarCantidad (id) {
+    const productoEditar = Producto.findById(id);
+    const nuevaCantidad = Number(document.getElementById(`cantNueva${id}`).value);
+
+    Carrito.actualizarCantidad(id, nuevaCantidad, productoEditar);
+
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    mostrarCarrito(carrito);
 }
 
 
@@ -294,10 +329,10 @@ function mostrarCarrito() {
                 <td>${producto.color}</td>
                 <td>${producto.categoria}</td>
                 <td>
-                    <form action="" method="" class="carrito__actualizar">
-                        <input type="number" name="cantidad" value="${item.cantidad}" min="1">
-                        <button type="submit">Actualizar</button>
-                    </form>
+                    <div class="carrito__actualizar">
+                        <input type="number" name="cantidad" value="${item.cantidad}" id="cantNueva${producto.id}" min="1">
+                        <button type="submit" onclick='actualizarCantidad(${producto.id})'>Actualizar</button>
+                    </div>
                 </td>
                 <td>S/. ${producto.precio} </td>
                 <td>S/. ${producto.precio * item.cantidad} </td>
