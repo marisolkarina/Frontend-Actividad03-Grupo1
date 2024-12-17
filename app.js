@@ -5,19 +5,6 @@ let usuarios = [
         apellidos: "Pachauri Rivera",
         email: "mpachaurir@uni.pe",
         password: "123456",
-        // carrito: {
-        //     items: [
-        //         {
-        //             idProducto: "200",
-        //             cantidad: 1
-        //         },
-        //         {
-        //             idProducto: "300",
-        //             cantidad: 1
-        //         }
-        //     ],
-        //     precioTotal: 28.00
-        // }
     },
     {
         id: "222",
@@ -25,10 +12,6 @@ let usuarios = [
         apellidos: "Flores",
         email: "alexia@gmail.com",
         password: "123456",
-        // carrito: {
-        //     items: [],
-        //     precioTotal: 0
-        // }
     }
 ]
 
@@ -39,7 +22,6 @@ class Usuario {
         this.apellidos = apellidos;
         this.email = email;
         this.password = password;
-        // this.carrito = carrito;
     }
 
 }
