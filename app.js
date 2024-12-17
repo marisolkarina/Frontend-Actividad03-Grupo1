@@ -4,12 +4,47 @@ let usuarios = [
         nombres: "Marisol Karina",
         apellidos: "Pachauri Rivera",
         email: "mpachaurir@uni.pe",
-        password: "123456"
+        password: "123456",
+        // carrito: {
+        //     items: [
+        //         {
+        //             idProducto: "200",
+        //             cantidad: 1
+        //         },
+        //         {
+        //             idProducto: "300",
+        //             cantidad: 1
+        //         }
+        //     ],
+        //     precioTotal: 28.00
+        // }
     },
     {
-
+        id: "222",
+        nombres: "Alexia",
+        apellidos: "Flores",
+        email: "alexia@gmail.com",
+        password: "123456",
+        // carrito: {
+        //     items: [],
+        //     precioTotal: 0
+        // }
     }
 ]
+
+class Usuario {
+    constructor(id, nombres, apellidos, email, password) {
+        this.id = id;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.password = password;
+        // this.carrito = carrito;
+    }
+
+}
+
+
 
 let productos = [
     {
@@ -41,7 +76,26 @@ let productos = [
     }
 ]
 
-function mostrarProductos(listaProductos) {
+class Producto {
+    constructor(id, nombre, urlImagen, descripcion, precio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.urlImagen = urlImagen;
+        this.descripcion = descripcion;
+        this.precio = precio;
+    }
+
+    static findById (id) {
+        const productoDeseado = productos.find(producto =>
+            producto.id.toString() === id.toString()
+        );
+        return productoDeseado;
+    }
+}
+
+function mostrarProductosAll () { mostrarProductos(productos)}
+
+function mostrarProductos (listaProductos) {
     let productosVisualizados = '';
     listaProductos.forEach(prod => {
         productosVisualizados += `
@@ -56,10 +110,10 @@ function mostrarProductos(listaProductos) {
                     <p>Color: ${prod.color}</p>
                     <p>${prod.descripcion}</p>
                 </div>
-                <form method="" action="/carrito.html" class="producto__carrito">
+                <div class="producto__carrito">
                     <input type="number" id="cantidad" min="1" step="1" name="cantidad" value="1"/>
-                    <button type="submit">Agregar producto</button>
-                </form>
+                    <button type="submit" onclick='agregarMiProducto(${prod.id})'>Agregar producto</button>
+                </div>
             </div>
         `;
     });
@@ -119,3 +173,102 @@ function filtrarPorPrecio () {
     mostrarProductos(productosFiltrados);
 }
 
+let carrito = {
+        items: [
+            {
+                cantidad: 1,
+                idProducto: "100"
+            }
+        ],
+        precioTotal: 129
+    }
+
+class Carrito {
+
+    static agregarProducto (producto, cantidadInput) {
+        const indiceEnCarrito = carrito.items.findIndex(cp => {
+            return cp.idProducto.toString() === producto.id.toString();
+        });
+
+        let nuevaCantidad;
+        const itemsActualizados = [...carrito.items];
+    
+        if (indiceEnCarrito >= 0) {
+
+            nuevaCantidad = carrito.items[indiceEnCarrito].cantidad + cantidadInput;
+
+            // Actualizando la cantidad de un producto existente en el carrito
+            itemsActualizados[indiceEnCarrito].cantidad = nuevaCantidad;
+
+        } else {
+
+            nuevaCantidad = cantidadInput;
+
+            // Añadiendo producto nuevo al carrito
+            itemsActualizados.push({
+                idProducto: producto.id,
+                cantidad: nuevaCantidad
+            });
+        }
+        
+        let precioProd = Number(producto.precio);
+        
+        const total = carrito.precioTotal + precioProd*Number(cantidadInput);
+        const carritoActualizado = {
+            items: itemsActualizados,
+            precioTotal: total
+        };
+        
+        carrito = carritoActualizado;
+        return carrito;
+    }
+}
+
+function agregarMiProducto (id) {
+    const cantidad = Number(document.getElementById("cantidad").value);
+    const productoDeseado = Producto.findById(id);
+
+    Carrito.agregarProducto(productoDeseado, cantidad);
+    console.log(carrito);
+}
+
+function mostrarCarrito() {
+
+    let precioTotalCarrito = carrito.precioTotal;
+    document.getElementById("total").innerHTML = precioTotalCarrito;
+
+    let productosCarrito = '';
+    carrito.items.forEach(item => {
+
+        let producto = Producto.findById(item.idProducto);
+
+        productosCarrito += `
+            <tr>
+                <td>
+                    <form action="" method="" class="carrito__eliminar">
+                        <button type="submit"><i class="bi bi-x-lg"></i></button>
+                    </form>
+                </td>
+                <td>
+                    <img src="${producto.urlImagen}" alt="${producto.nombre}">
+                </td>
+                <td>
+                    <p>${producto.nombre}</p>
+                </td>
+                <td>${producto.color}</td>
+                <td>${producto.categoria}</td>
+                <td>
+                    <form action="" method="" class="carrito__actualizar">
+                        <input type="number" name="cantidad" value="${item.cantidad}" min="1">
+                        <button type="submit">Actualizar</button>
+                    </form>
+                </td>
+                <td>S/. ${producto.precio} </td>
+                <td>S/. ${producto.precio * item.cantidad} </td>
+            </tr>
+        `;
+    });
+
+    document.getElementById("contenidoCarrito").innerHTML = productosCarrito;
+
+}
