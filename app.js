@@ -81,7 +81,7 @@ function mostrarProductos (listaProductos) {
     let productosVisualizados = '';
     listaProductos.forEach(prod => {
         productosVisualizados += `
-            <div style="margin: 10px; padding: 10px;" class="producto">
+            <div class="producto">
                 <figure>
                     <img src="${prod.urlImagen}" alt="${prod.nombre}">
                     <figcaption class="producto__titulo">${prod.nombre}</figcaption>

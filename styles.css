@@ -185,10 +185,10 @@ header {
     .nav-categorias a { padding-right: 80px; }
 }
 
-/*aside: filtros*/
+/*aside:        */
 .filtros {
-    padding: 20px 20px 0px 0px;
-    margin: 0px 10px;
+    padding-top: 20px;
+    margin: 0px 20px;
 }
 
 .filtros a {
@@ -210,16 +210,19 @@ header {
 .filtros__categoria li,
 .filtros__categoria p { padding: 10px 0px; }
 
-.filtros__precio p { padding: 10px 0px; }
-.filtros__precio form {
+.filtros__precio--minmax {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
 }
+.filtros__precio p { padding: 10px 0px; }
+
 .filtros__precio input {
     padding: 10px;
     border: 2px var(--gray) solid;
     border-radius: 5px;
     margin: 10px 0px;
+    width: 100%;
 }
 .filtros__precio button {
     background-color: var(--btn);
@@ -240,8 +243,7 @@ header {
 
 @media (min-width: 768px) {
     .filtros {
-        padding: 20px 20px 0px 0px;
-        margin-left: 80px;
+        padding: 20px 20px 20px 0px;
         width: 15vw;
     }
     .filtros__orden {
@@ -254,7 +256,13 @@ header {
         width: 100%;
     }
 
-    .filtros__precio { margin-top: 20px; width: 100%;}
+    .filtros__precio { 
+        margin-top: 20px; 
+    }
+
+    .filtros__precio--minmax {
+        flex-direction: column;
+    }
     .filtros__color{ margin-top: 20px; width: 100%;}
 }
 
@@ -263,7 +271,7 @@ header {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
-    padding: 20px 0 0 10px;
+    padding: 20px 10px 0 10px;
 }
 
 .producto__titulo {
@@ -276,7 +284,10 @@ header {
 .producto__caracteristicas p {padding: 5px 0px;}
 .producto__caracteristicas p:nth-child(1) { text-align: center; font-size: 20px;}
 
-.producto { position: relative; }
+.producto {
+    margin: 10px;
+    padding: 10px;
+}
 .producto figure {
     display: flex;
     flex-direction: column;
@@ -308,7 +319,7 @@ header {
     .main-index {
         grid-template-columns: 1fr 1fr;
         gap: 20px;
-        padding: 20px 0 0 10px;
+        padding: 20px 20px 0 10px;
     }
 }
 
@@ -316,7 +327,7 @@ header {
     .main-index {
         grid-template-columns: 1fr 1fr 1fr;
         gap: 20px;
-        padding: 20px 80px 0 20px;
+        padding: 20px 20px 0 20px;
     }
 }
 

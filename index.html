@@ -63,13 +63,17 @@
 
             <div class="filtros__precio">
                 <p>Filtrar por precio</p>
-                <!-- <form action="" method=""> -->
-                    <label for="min">Mín</label>
-                    <input type="number" name="precio">
-                    <label for="max">Max</label>
-                    <input type="number" name="precio">
-                    <button onclick="filtrarPorPrecio()">Filtrar</button>
-                <!-- </form> -->
+                <div class="filtros__precio--minmax">
+                    <div>
+                        <label for="min">Mín</label>
+                        <input type="number" name="precio">
+                    </div>
+                    <div>
+                        <label for="max">Max</label>
+                        <input type="number" name="precio">
+                    </div>
+                </div>
+                <button onclick="filtrarPorPrecio()">Filtrar</button>
             </div>
 
             <div class="filtros__color">
@@ -94,9 +98,11 @@
         <footer class="footer">
             <div>
                 <p>Av. Brasil 210, Breña</p>
+                <p>Horario de atención: Lunes a Sábado de 9:00 am a 7:30 pm</p>
+            </div>
+            <div>
                 <p>Teléfono: 920 000 965</p>
                 <p>Correo: ventas@petshop.pe</p>
-                <p>Horario de atención: Lunes a Sábado de 9:00 am a 7:30 pm</p>
             </div>
             <div class="footer__redes">
                 <a href=""><i class="bi bi-facebook"></i></a>
