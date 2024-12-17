@@ -157,11 +157,12 @@ function filtrarPorPrecio () {
 
 let carrito = {
         items: [
-            {
-                idProducto: "300",
-                cantidad: 1,
-            }
+            // {
+            //     idProducto: "300",
+            //     cantidad: 1,
+            // }
         ],
+        // precioTotal: 13.00
         precioTotal: 0
     }
 
@@ -211,6 +212,31 @@ class Carrito {
         
         return carrito;
     }
+
+    static eliminarProducto (id, producto) {
+        let miCarrito = JSON.parse(localStorage.getItem("carrito"));
+
+        const productoEliminar = miCarrito.items.find(cp =>
+            cp.idProducto.toString() === id.toString()
+        );
+        const cantidadProducto = productoEliminar.cantidad;
+
+        let precioProd = Number(producto.precio);
+
+        miCarrito.precioTotal -= precioProd*cantidadProducto;
+
+        const itemsActualizados = miCarrito.items.filter(item => {
+            return item.idProducto.toString() !== id.toString();
+        });
+
+        const carritoActualizado = {
+            items: itemsActualizados,
+            precioTotal: miCarrito.precioTotal
+        };
+        carrito = carritoActualizado;
+
+        return carrito;
+    }
 }
 
 function agregarMiProducto (id) {
@@ -221,6 +247,18 @@ function agregarMiProducto (id) {
 
     //Guardando carrito en el local storage
     localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function eliminarProducto (id) {
+    const productoEliminar = Producto.findById(id);
+
+    Carrito.eliminarProducto(id, productoEliminar);
+
+    //Guardando carrito en el local storage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    document.getElementById(`prod${id}`).innerHTML = '';
+    document.getElementById("total").innerHTML = carrito.precioTotal;
 }
 
 
@@ -241,11 +279,11 @@ function mostrarCarrito() {
         let producto = Producto.findById(item.idProducto);
 
         productosCarrito += `
-            <tr>
+            <tr id="prod${item.idProducto}">
                 <td>
-                    <form action="" method="" class="carrito__eliminar">
-                        <button type="submit"><i class="bi bi-x-lg"></i></button>
-                    </form>
+                    <div class="carrito__eliminar">
+                        <button type="submit" onclick='eliminarProducto(${producto.id})'><i class="bi bi-x-lg"></i></button>
+                    </div>
                 </td>
                 <td>
                     <img src="${producto.urlImagen}" alt="${producto.nombre}">
