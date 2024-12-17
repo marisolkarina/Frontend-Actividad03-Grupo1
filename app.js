@@ -111,7 +111,7 @@ function mostrarProductos (listaProductos) {
                     <p>${prod.descripcion}</p>
                 </div>
                 <div class="producto__carrito">
-                    <input type="number" id="cantidad" min="1" step="1" name="cantidad" value="1"/>
+                    <input type="number" min="1" step="1" id="cantidad${prod.id}" value="1"/>
                     <button type="submit" onclick='agregarMiProducto(${prod.id})'>Agregar producto</button>
                 </div>
             </div>
@@ -176,26 +176,32 @@ function filtrarPorPrecio () {
 let carrito = {
         items: [
             {
+                idProducto: "300",
                 cantidad: 1,
-                idProducto: "100"
             }
         ],
-        precioTotal: 129
+        precioTotal: 0
     }
 
 class Carrito {
 
     static agregarProducto (producto, cantidadInput) {
-        const indiceEnCarrito = carrito.items.findIndex(cp => {
+        if (!JSON.parse(localStorage.getItem("carrito"))) {
+            //Guardando carrito actual en el local storage
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+        }
+        let miCarrito = JSON.parse(localStorage.getItem("carrito"));
+
+        const indiceEnCarrito = miCarrito.items.findIndex(cp => {
             return cp.idProducto.toString() === producto.id.toString();
         });
 
         let nuevaCantidad;
-        const itemsActualizados = [...carrito.items];
+        const itemsActualizados = [...miCarrito.items];
     
         if (indiceEnCarrito >= 0) {
 
-            nuevaCantidad = carrito.items[indiceEnCarrito].cantidad + cantidadInput;
+            nuevaCantidad = miCarrito.items[indiceEnCarrito].cantidad + cantidadInput;
 
             // Actualizando la cantidad de un producto existente en el carrito
             itemsActualizados[indiceEnCarrito].cantidad = nuevaCantidad;
@@ -213,32 +219,42 @@ class Carrito {
         
         let precioProd = Number(producto.precio);
         
-        const total = carrito.precioTotal + precioProd*Number(cantidadInput);
+        const total = miCarrito.precioTotal + precioProd*Number(cantidadInput);
         const carritoActualizado = {
             items: itemsActualizados,
             precioTotal: total
         };
         
         carrito = carritoActualizado;
+        
         return carrito;
     }
 }
 
 function agregarMiProducto (id) {
-    const cantidad = Number(document.getElementById("cantidad").value);
+    const cantidad = Number(document.getElementById(`cantidad${id}`).value);
     const productoDeseado = Producto.findById(id);
 
     Carrito.agregarProducto(productoDeseado, cantidad);
-    console.log(carrito);
+
+    //Guardando carrito en el local storage
+    localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-function mostrarCarrito() {
 
-    let precioTotalCarrito = carrito.precioTotal;
+function mostrarCarrito() {
+    if (!JSON.parse(localStorage.getItem("carrito"))) {
+        //Guardando carrito actual en el local storage
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+    //Recuperando carrito del local
+    let miCarrito = JSON.parse(localStorage.getItem("carrito"));
+
+    let precioTotalCarrito = miCarrito.precioTotal;
     document.getElementById("total").innerHTML = precioTotalCarrito;
 
     let productosCarrito = '';
-    carrito.items.forEach(item => {
+    miCarrito.items.forEach(item => {
 
         let producto = Producto.findById(item.idProducto);
 
