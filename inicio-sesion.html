@@ -30,14 +30,14 @@
 
             <div class="nav-secundario__iconos">
                 <a href="inicio-sesion.html"><i class="bi bi-person"></i></a>
-                <a href="carrito.html"><i class="bi bi-cart3"></i></a>
+                <a href="carrito.html" onclick="mostrarCarrito()"><i class="bi bi-cart3"></i></a>
             </div>
         </nav>
 
         <nav class="nav-categorias">
-            <a href="#">Perro</a>
-            <a href="#">Gato</a>
-            <a href="#">Conejo</a>
+            <a onclick="filtrarPorCategoria('perro')">Perro</a>
+            <a onclick="filtrarPorCategoria('gato')">Gato</a>
+            <a  onclick="filtrarPorCategoria('conejo')">Conejo</a>
         </nav>
     </header>
 
