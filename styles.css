@@ -54,6 +54,12 @@
 }
 
 /* HEADER */
+
+header {
+    background: radial-gradient(circle, #d46a66, #ffab8e, #ffe1d5);
+    color: white;
+    padding: 20px;
+}
 .nav-principal {
     display: flex;
     flex-direction: column;
@@ -94,12 +100,25 @@
     border: 2px var(--gray) solid;
     border-radius: 5px;
 }
+
 .nav-secundario button {
-    display: inline-block;
-    border: none;
-    padding: 5px;
-    background-color: var(--white);
-    cursor: pointer;
+    background: transparent; /* para el fondo transparente */
+    border: none; /* Sin borde */
+    padding: 0; /* Sin relleno */
+    cursor: pointer; /* Cursor de mano */
+    display: inline-block; /* Alinea el contenido del botón */
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-secundario button i {
+    font-size: 20px; /* Tamaño del ícono */
+    color: var(--black); /* Color del ícono */
+    transition: color 0.3s ease; /* Efecto al pasar el ratón */
+}
+
+.nav-secundario button:hover i {
+    color: var(--primary); /* Cambia el color del ícono al pasar el ratón */
 }
 
 .nav-secundario__iconos {
@@ -107,8 +126,13 @@
     display: flex;
     justify-content: space-evenly;
 }
-.nav-secundario__iconos a {
-    font-size: 25px;
+.nav-secundario__iconos a i {
+    display: flex; /* Asegura alineación interna */
+    justify-content: center;
+    align-items: center;
+    font-size: 25px; /* Tamaño uniforme de fuente */
+    width: 40px; /* Ajusta el ancho */
+    height: 40px; /* Ajusta la altura */
 }
 
 .nav-categorias {

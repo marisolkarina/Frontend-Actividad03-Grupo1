@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="styles.css">
         <!-- íconos -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="">
     </head>
 
     <body>
@@ -125,5 +126,82 @@
         </footer>
 
     </body>
+
+    <script>
+        // Claves para almacenar los datos en localStorage
+        const usuariosKey = "usuarios";
+        const usuarioActivoKey = "usuarioActivo";
+    
+        // Función para obtener usuarios desde localStorage
+        function obtenerUsuarios() {
+            return JSON.parse(localStorage.getItem(usuariosKey)) || [];
+        }
+    
+        // Función para guardar usuarios en localStorage
+        function guardarUsuarios(usuarios) {
+            localStorage.setItem(usuariosKey, JSON.stringify(usuarios));
+        }
+    
+        // Función para registrar un usuario
+        function registrarUsuario(event) {
+            event.preventDefault();
+    
+            const nombre = document.getElementById("nombre").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const dni = document.getElementById("dni").value.trim();
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+    
+            // Validaciones para la contra y el correo
+            if (password !== confirmPassword) {
+                alert("Las contraseñas no coinciden.");
+                return;
+            }
+    
+            const usuarios = obtenerUsuarios();
+            if (usuarios.some(u => u.email === email)) {
+                alert("El correo ya está registrado.");
+                return;
+            }
+    
+            // Creando un nuevo usuario
+            const nuevoUsuario = { nombre, email, dni, password };
+            usuarios.push(nuevoUsuario);
+            guardarUsuarios(usuarios);
+    
+            // Mensaje de éxito y sesión iniciada
+            alert("Registro exitoso. Iniciando sesión...");
+            iniciarSesion(email, password);
+        }
+    
+        // Función para iniciar sesión
+        function iniciarSesion(email, password) {
+            const usuarios = obtenerUsuarios();
+            const usuario = usuarios.find(u => u.email === email && u.password === password);
+    
+            if (usuario) {
+                localStorage.setItem(usuarioActivoKey, JSON.stringify(usuario));
+                alert(`¡Bienvenido/a, ${usuario.nombre}!`);
+                window.location.href = "index.html"; // Redirigir a la página principal en caso inicie sesión xd
+            } else {
+                alert("Correo o contraseña incorrectos.");
+            }
+        }
+    
+        // Función para manejar el inicio de sesión desde el formulario
+        function manejarInicioSesion(event) {
+            event.preventDefault();
+    
+            const email = document.getElementById("loginEmail").value.trim();
+            const password = document.getElementById("loginPassword").value;
+    
+            iniciarSesion(email, password);
+        }
+    
+        // Asignar eventos a los formularios
+        document.querySelector('.main-registro form[action=""]').addEventListener("submit", registrarUsuario);
+        document.querySelector('form[action="inicio-sesion.html"]').addEventListener("submit", manejarInicioSesion);
+    </script>
+    
 
 </html>
