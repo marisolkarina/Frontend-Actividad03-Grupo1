@@ -129,7 +129,7 @@ header {
 .nav-secundario__iconos a i {
     display: flex; /* Asegura alineación interna */
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     font-size: 25px; /* Tamaño uniforme de fuente */
     width: 40px; /* Ajusta el ancho */
     height: 40px; /* Ajusta la altura */
@@ -148,6 +148,7 @@ header {
     color: var(--white);
     font-size: 17px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -567,8 +568,9 @@ header {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 10px;
+    font-family: serif;
 }
 
 .login-section button:hover {
@@ -610,7 +612,9 @@ header {
     color: var(--black);
 }
 
-.register-section button {
+.register-section a {
+    display: inline-block;
+    margin-top: 10px;
     background-color: var(--btn);
     color: var(--white);
     padding: 10px;
@@ -619,10 +623,11 @@ header {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 14px;
+    font-size: 16px;
+    text-decoration: none;
 }
 
-.register-section button:hover {
+.register-section a:hover {
     background-color: var(--btn-hover);
 }
 
@@ -690,7 +695,8 @@ header {
     transition: background-color 0.3s ease;
     max-width: 200px;
     width: auto;
-    font-size: 14px;
+    font-size: 16px;
+    font-family: serif;
 }
 
 .finalizar-pedido button:hover {
@@ -715,7 +721,8 @@ header {
     width: auto;
     display: inline-block;
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 16px;
+    font-family: serif;
 }
 
 .finalizar-pedido .confirmar-pedido button:hover {
@@ -798,33 +805,43 @@ header {
     color: var(--white);
     cursor: pointer;
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 16px;
+    font-family: serif;
 }
 .main-registro form button:hover {
     background-color: var(--btn-hover);
 }
 /* opcion de iniciar sesión en el registro.html*/
-.main-registro form:nth-child(2) {
+.opcionLogin {
     background-color: var(--white);
     width: 400px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin-top: 15px;
+    text-align: center;
 }
 
-.main-registro form:nth-child(2) button {
-    background-color: var(--btn);
+.opcionLogin a {
+    display: inline-block;
     margin-top: 10px;
-    font-size: 14px;
+    background-color: var(--btn);
+    font-size: 16px;
+    text-decoration: none;
+    color: var(--white);
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-.main-registro form:nth-child(2) button:hover {
+.opcionLogin a:hover {
     background-color: var(--btn-hover);
 }
 
+
 /* Texto */
-.main-registro form p {
+.main-registro form p,
+.opcionLogin p {
     font-size: 15px;
     line-height: 1.5;
     margin-top: 10px;
