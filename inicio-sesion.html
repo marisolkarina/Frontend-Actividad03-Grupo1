@@ -1,102 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesión</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Íconos de Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio de Sesión</title>
+        <link rel="stylesheet" href="styles.css">
+        <!-- Íconos de Bootstrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
 
-<body>
-    <!-- Encabezado principal -->
-    <header class="header">
-        <nav class="nav-principal">
-            <a href="index.html">Inicio</a>
-            <a href="index.html">Productos</a>
-            <a href="#">Nosotros</a>
-            <a href="#">Blog</a>
-        </nav>
+    <body onload="usuariosOnLoad()">
+        <!-- Encabezado principal -->
+        <header class="header">
+            <nav class="nav-principal">
+                <a href="index.html">Inicio</a>
+                <a href="index.html">Productos</a>
+                <a href="#">Nosotros</a>
+                <a href="#">Blog</a>
+            </nav>
 
-        <nav class="nav-secundario">
-            <a href="index.html" class="logo">PetShop</a>
+            <nav class="nav-secundario">
+                <a href="index.html" class="logo">PetShop</a>
 
-            <form action="" method="POST" class="nav-busqueda">
-                <input type="text" placeholder="Buscar productos" name="textoIngresado">
-                <button type="submit"><i class="bi bi-search"></i></button>
-            </form>
+                <form action="" method="POST" class="nav-busqueda">
+                    <input type="text" placeholder="Buscar productos" name="textoIngresado">
+                    <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
 
-            <div class="nav-secundario__iconos">
-                <a href="inicio-sesion.html"><i class="bi bi-person"></i></a>
-                <a href="carrito.html" onclick="mostrarCarrito()"><i class="bi bi-cart3"></i></a>
+                <div class="nav-secundario__iconos">
+                    <a href="inicio-sesion.html"><i class="bi bi-person"></i></a>
+                    <a href="carrito.html" onclick="mostrarCarrito()"><i class="bi bi-cart3"></i></a>
+                </div>
+            </nav>
+
+            <nav class="nav-categorias">
+                <a onclick="filtrarPorCategoria('perro')">Perro</a>
+                <a onclick="filtrarPorCategoria('gato')">Gato</a>
+                <a  onclick="filtrarPorCategoria('conejo')">Conejo</a>
+            </nav>
+        </header>
+
+        <!-- Contenido principal -->
+        <main class="main-login">
+            <!-- Formulario de inicio de sesión -->
+            <section class="login-section">
+                <form action="" method="" class="login-form" onsubmit="iniciarSesion(event)">
+                    <h2>Acceder</h2>
+
+                    <div class="form-group">
+                        <label for="loginEmail">Dirección de correo</label>
+                        <input type="email" name="loginEmail" id="loginEmail" placeholder="Ingresa tu correo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña</label>
+                        <input type="password" name="loginPassword" id="loginPassword" placeholder="Ingresa tu contraseña" minlength="6" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                </form>
+
+                <div class="login-extra">
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                </div>
+            </section>
+
+            <!-- Botón de registro -->
+            <section class="register-section">
+                <form action="registro.html" method="GET" class="register-form">
+                    <h2>Registrarse</h2>
+                    <p>Al registrarte podrás acceder al estado de tus pedidos y tener una experiencia de compra más rápida.</p>
+                    <button type="submit" class="btn btn-secondary">Regístrate</button>
+                </form>
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer class="footer">
+            <div>
+                <p>Av. Brasil 210, Breña</p>
+                <p>Horario de atención: Lunes a Sábado de 9:00 am a 7:30 pm</p>
             </div>
-        </nav>
-
-        <nav class="nav-categorias">
-            <a onclick="filtrarPorCategoria('perro')">Perro</a>
-            <a onclick="filtrarPorCategoria('gato')">Gato</a>
-            <a  onclick="filtrarPorCategoria('conejo')">Conejo</a>
-        </nav>
-    </header>
-
-    <!-- Contenido principal -->
-    <main class="main-login">
-        <!-- Formulario de inicio de sesión -->
-        <section class="login-section">
-            <form action="" method="POST" class="login-form" novalidate>
-                <h2>Acceder</h2>
-
-                <div class="form-group">
-                    <label for="email">Dirección de correo</label>
-                    <input type="email" name="email" id="email" placeholder="Ingresa tu correo" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Contraseña</label>
-                    <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" minlength="6" required>
-                </div>
-
-                <div class="form-group">
-                    <input type="checkbox" id="recordarme" name="recordarme">
-                    <span for="recordarme">Recordarme</span>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-            </form>
-
-            <div class="login-extra">
-                <a href="#">¿Olvidaste tu contraseña?</a>
+            <div>
+                <p>Teléfono: 920 000 965</p>
+                <p>Correo: ventas@petshop.pe</p>
             </div>
-        </section>
+            <div class="footer__redes">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-whatsapp"></i></a>
+            </div>
+        </footer>
+    </body>
 
-        <!-- Botón de registro -->
-        <section class="register-section">
-            <form action="registro.html" method="GET" class="register-form">
-                <h2>Registrarse</h2>
-                <p>Al registrarte podrás acceder al estado de tus pedidos y tener una experiencia de compra más rápida.</p>
-                <button type="submit" class="btn btn-secondary">Regístrate</button>
-            </form>
-        </section>
-    </main>
-
-    <!-- Pie de página -->
-    <footer class="footer">
-        <div>
-            <p>Av. Brasil 210, Breña</p>
-            <p>Horario de atención: Lunes a Sábado de 9:00 am a 7:30 pm</p>
-        </div>
-        <div>
-            <p>Teléfono: 920 000 965</p>
-            <p>Correo: ventas@petshop.pe</p>
-        </div>
-        <div class="footer__redes">
-            <a href="#"><i class="bi bi-facebook"></i></a>
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-whatsapp"></i></a>
-        </div>
-    </footer>
-</body>
+    <script src="app.js"></script>
 
 </html>

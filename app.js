@@ -4,14 +4,14 @@ let usuarios = [
         nombres: "Marisol Karina",
         apellidos: "Pachauri Rivera",
         email: "mpachaurir@uni.pe",
-        password: "123456",
+        password: "12345678",
     },
     {
         id: "222",
         nombres: "Alexia",
         apellidos: "Flores",
         email: "alexia@gmail.com",
-        password: "123456",
+        password: "12345678",
     }
 ]
 
@@ -24,8 +24,76 @@ class Usuario {
         this.password = password;
     }
 
+    static obtenerUsuarios() {
+        return JSON.parse(localStorage.getItem('usuarios')) || usuarios;
+    }
 }
 
+/* REGISTRO*/
+function guardarUsuarios (usuarios) {
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+}
+
+function usuariosOnLoad () {
+    //Apenas carga la pagina se guarda en el local storage los usuarios
+    let usuariosActuales = Usuario.obtenerUsuarios();
+    guardarUsuarios (usuariosActuales);
+}
+
+function registrarUsuario (event) {
+    event.preventDefault();
+    
+    const nombres = document.getElementById("nombres").value.trim();
+    const apellidos = document.getElementById("apellidos").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const dni = document.getElementById("dni").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    // Validaciones para la contra y el correo
+    if (password !== confirmPassword) {
+        alert("Las contraseñas no coinciden.");
+        return;
+    }
+
+    const listaUsuarios = Usuario.obtenerUsuarios();
+    if (listaUsuarios.some(u => u.email === email)) {
+        alert("El correo ya está registrado.");
+        return;
+    }
+
+    const id = Math.floor(Math.random() * 1000).toString();
+    // Creando un nuevo usuario
+    const nuevoUsuario = { id, nombres, apellidos, email, dni, password };
+    listaUsuarios.push(nuevoUsuario);
+
+    // Guardando usuarios en el local storage
+    guardarUsuarios (listaUsuarios);
+
+    // Mensaje de éxito y sesión iniciada
+    alert("Registro exitoso. ");
+}
+
+/* INICIO DE SESIÓN */
+
+function iniciarSesion(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const password = document.getElementById("loginPassword").value;
+
+    const listaUsuarios = Usuario.obtenerUsuarios();
+
+    const usuario = listaUsuarios.find(u => u.email === email && u.password === password);
+
+    if (usuario) {
+        localStorage.setItem('usuarioActivo', JSON.stringify(usuario));
+        alert(`¡Bienvenido/a, ${usuario.nombres}!`);
+        window.location.href = "index.html"; // Redirigir a la página principal en caso inicie sesión
+    } else {
+        alert("Correo o contraseña incorrectos.");
+    }
+}
 
 
 let productos = [
@@ -343,3 +411,5 @@ function mostrarCarrito() {
     document.getElementById("contenidoCarrito").innerHTML = productosCarrito;
 
 }
+
+

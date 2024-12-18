@@ -129,7 +129,7 @@ header {
 .nav-secundario__iconos a i {
     display: flex; /* Asegura alineación interna */
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     font-size: 25px; /* Tamaño uniforme de fuente */
     width: 40px; /* Ajusta el ancho */
     height: 40px; /* Ajusta la altura */
@@ -148,6 +148,7 @@ header {
     color: var(--white);
     font-size: 17px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 @media (min-width: 768px) {
