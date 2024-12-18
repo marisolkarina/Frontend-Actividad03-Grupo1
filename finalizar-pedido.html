@@ -23,8 +23,8 @@
             <nav class="nav-secundario">
                 <a href="index.html">PetShop</a>
 
-                <form action="" method="POST">
-                    <input placeholder="Buscar" name="textoIngresado">
+                <form onsubmit="buscarPorPalabra(event)">
+                    <input placeholder="Buscar" id="textoIngresado">
                     <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
 
@@ -45,7 +45,7 @@
         <main class="main-pedido">
             <div class="finalizar-pedido">
                 <div>
-                    <section>
+                    <!-- <section>
                         <h4>Detalles del pedido</h4>
                         <p>Id pedido: 123456789</p>
                         <p>Fecha de pedido: 28/11/24</p>
@@ -57,7 +57,7 @@
                             <p>Accecan Collar Michi Flores Mini (2)</p>
                         </div>
                         <p>Precio total: S/. 159.00</p>
-                    </section>
+                    </section> -->
 
                     <!-- Información Personal -->
                     <section>
@@ -117,7 +117,7 @@
                         <form action="" method="POST">
                             <div>
                                 <label for="numero-tarjeta">Número de Tarjeta:</label>
-                                <input type="text" id="numero-tarjeta" name="numero-tarjeta" required>
+                                <input type="text" id="numero-tarjeta" name="numero-tarjeta" minlength="16" maxlength="16" required>
                             </div>
                             <div>
                                 <label for="fecha-vencimiento">Fecha de Vencimiento:</label>
@@ -125,7 +125,7 @@
                             </div>
                             <div>
                                 <label for="cvv">CVV:</label>
-                                <input type="text" id="cvv" name="cvv" required>
+                                <input type="text" id="cvv" name="cvv" maxlength="3" required>
                             </div>
                             <div>
                                 <label for="nombre-tarjeta">Nombres del Titular:</label>
@@ -145,7 +145,7 @@
 
                     <!-- Confirmar Pedido -->
                     <section class="confirmar-pedido">
-                        <form action="" method="POST">
+                        <form action="" method="" onsubmit="confirmarPedido(event)">
                             <button type="submit">Confirmar Pedido</button>
                         </form>
                     </section>
@@ -171,4 +171,6 @@
         </footer>
 
     </body>
+
+    <script src="app.js"></script>
 </html>

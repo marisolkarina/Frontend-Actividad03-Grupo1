@@ -95,6 +95,7 @@ function iniciarSesion(event) {
     }
 }
 
+/* INDEX: PRODUCTOS */
 
 let productos = [
     {
@@ -222,6 +223,19 @@ function filtrarPorPrecio () {
 
     mostrarProductos(productosFiltrados);
 }
+//buscar productos por palabra, si esta incluida en la descripcion o nombre
+function buscarPorPalabra (event) {
+    event.preventDefault();
+    const stringBuscado = document.getElementById("textoIngresado").value;
+    const productosBuscados = productos.filter(prod =>
+        prod.nombre.toLowerCase().includes(stringBuscado.toLowerCase()) ||
+        prod.descripcion.toLowerCase().includes(stringBuscado.toLowerCase())
+    );
+
+    mostrarProductos(productosBuscados);
+}
+
+/* CARRITO */
 
 let carrito = {
         items: [
@@ -413,3 +427,42 @@ function mostrarCarrito() {
 }
 
 
+/* PEDIDO */
+
+function confirmarPedido (event) {
+    event.preventDefault();
+
+    const miCarrito = JSON.parse(localStorage.getItem("carrito"));
+    const idRandom = Math.floor(Math.random() * 1000).toString();
+
+    miCarrito.items.map(item =>
+        item.idProducto = Producto.findById(item.idProducto).nombre
+    )
+
+    const miPedido = {
+        id: idRandom,
+        ...miCarrito,
+        estado: 'pendiente',
+        fechaPedido: new Date(),
+        fechaEntrega: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 dias despues del pedido
+    }
+
+    // Guardando pedido en el local storage
+    localStorage.setItem('pedido', JSON.stringify(miPedido));
+    let pedidoGuardado = JSON.parse(localStorage.getItem("pedido"));
+
+    const idPedido = pedidoGuardado.id;
+    const precioTotal = pedidoGuardado.precioTotal;
+    const estado = pedidoGuardado.estado;
+    const fechaPedido = pedidoGuardado.fechaPedido;
+    const fechaEntrega = pedidoGuardado.fechaEntrega;
+
+    let mensajeProductos = miPedido.items
+        .map(item => `- ${item.idProducto}: ${item.cantidad}`)
+        .join('\n');
+
+    alert(`Pedido existoso!\n\nPedido ID: ${idPedido}\n\nProductos:\n${mensajeProductos}\n\nTotal: S/. ${precioTotal}
+        \nEstado: ${estado}\n\nFecha de pedido: ${fechaPedido}\n\nFecha de entrega: ${fechaEntrega}`);
+
+    window.location.href = "index.html"; // Redirigir a la página principal luego de hacer el pedido
+}

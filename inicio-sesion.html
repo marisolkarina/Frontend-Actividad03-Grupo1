@@ -23,8 +23,8 @@
             <nav class="nav-secundario">
                 <a href="index.html" class="logo">PetShop</a>
 
-                <form action="" method="POST" class="nav-busqueda">
-                    <input type="text" placeholder="Buscar productos" name="textoIngresado">
+                <form onsubmit="buscarPorPalabra(event)">
+                    <input placeholder="Buscar" id="textoIngresado">
                     <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
 
