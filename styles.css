@@ -847,3 +847,49 @@ header {
         gap: 50px;
     }
 }
+
+/*registro movil tarjeta*/
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+
+.main-pedido {
+    padding: 20px;
+}
+
+.finalizar-pedido > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.finalizar-pedido > div > section {
+    flex: 1 1 calc(100% - 20px); 
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (min-width: 768px) {
+    .finalizar-pedido > div {
+        flex-wrap: nowrap;
+    }
+
+    .finalizar-pedido > div > section {
+        flex: 1 1 48%; 
+    }
+}
+
+
+#numero-tarjeta + img {
+    display: block;
+    margin: 10px 0 0;
+    width: 80px;
+}

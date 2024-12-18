@@ -115,17 +115,18 @@
                     <section>
                         <h4>Información de Pago</h4>
                         <form action="" method="POST">
-                            <div>
-                                <label for="numero-tarjeta">Número de Tarjeta:</label>
-                                <input type="text" id="numero-tarjeta" name="numero-tarjeta" required>
-                            </div>
+                            <!-- Número de Tarjeta con la imagen de Visa -->
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <input type="text" id="numero-tarjeta" name="numero-tarjeta" maxlength="16" pattern="\d{16}" required>
+                                <img src="visa-logo.png" alt="Logo Visa" style="width: 50px; height: auto;">
+                            </div>                            
                             <div>
                                 <label for="fecha-vencimiento">Fecha de Vencimiento:</label>
                                 <input type="month" id="fecha-vencimiento" name="fecha-vencimiento" required>
                             </div>
                             <div>
                                 <label for="cvv">CVV:</label>
-                                <input type="text" id="cvv" name="cvv" required>
+                                <input type="text" id="cvv" name="cvv" maxlength="3" pattern="\d{3}" required>
                             </div>
                             <div>
                                 <label for="nombre-tarjeta">Nombres del Titular:</label>
@@ -142,6 +143,7 @@
                             <button type="submit">Guardar</button>
                         </form>
                     </section>
+
 
                     <!-- Confirmar Pedido -->
                     <section class="confirmar-pedido">
