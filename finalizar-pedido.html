@@ -45,19 +45,6 @@
         <main class="main-pedido">
             <div class="finalizar-pedido">
                 <div>
-                    <!-- <section>
-                        <h4>Detalles del pedido</h4>
-                        <p>Id pedido: 123456789</p>
-                        <p>Fecha de pedido: 28/11/24</p>
-                        <p>Estado del pedido: pendiente</p>
-                        <p>Fecha de entrega: 02/12/24</p>
-                        <div>
-                            <p>Productos del pedido: </p>
-                            <p>Alfombra Cognitiva Estrella (1)</p>
-                            <p>Accecan Collar Michi Flores Mini (2)</p>
-                        </div>
-                        <p>Precio total: S/. 159.00</p>
-                    </section> -->
 
                     <!-- Información Personal -->
                     <section>
@@ -79,69 +66,73 @@
                         </form>
                     </section>
 
-                    <!-- Datos de Envío -->
-                    <section>
-                        <h4>Datos de Envío</h4>
-                        <form action="" method="POST">
-                            <div>
-                                <label for="direccion">Dirección de Envío:</label>
-                                <input type="text" id="direccion" name="direccion" required>
-                            </div>
-                            <div>
-                                <label for="pais">País:</label>
-                                <input type="text" id="pais" name="pais" required>
-                            </div>
-                            <div>
-                                <label for="region">Región:</label>
-                                <input type="text" id="region" name="region" required>
-                            </div>
-                            <div>
-                                <label for="ciudad">Ciudad:</label>
-                                <input type="text" id="ciudad" name="ciudad" required>
-                            </div>
-                            <div>
-                                <label for="codigo-postal">Código Postal:</label>
-                                <input type="text" id="codigo-postal" name="codigo-postal" required>
-                            </div>
-                            <div>
-                                <label for="telefono">Teléfono de Contacto:</label>
-                                <input type="tel" id="telefono" name="telefono" required>
-                            </div>
-                            <button type="submit">Guardar</button>
-                        </form>
-                    </section>
+                    <div class="envioPago">
+                        <!-- Datos de Envío -->
+                        <section>
+                            <h4>Datos de Envío</h4>
+                            <form action="" method="POST">
+                                <div>
+                                    <label for="direccion">Dirección de Envío:</label>
+                                    <input type="text" id="direccion" name="direccion" required>
+                                </div>
+                                <div>
+                                    <label for="pais">País:</label>
+                                    <input type="text" id="pais" name="pais" required>
+                                </div>
+                                <div>
+                                    <label for="region">Región:</label>
+                                    <input type="text" id="region" name="region" required>
+                                </div>
+                                <div>
+                                    <label for="ciudad">Ciudad:</label>
+                                    <input type="text" id="ciudad" name="ciudad" required>
+                                </div>
+                                <div>
+                                    <label for="codigo-postal">Código Postal:</label>
+                                    <input type="text" id="codigo-postal" name="codigo-postal" required>
+                                </div>
+                                <div>
+                                    <label for="telefono">Teléfono de Contacto:</label>
+                                    <input type="tel" id="telefono" name="telefono" required>
+                                </div>
+                                <button type="submit">Guardar</button>
+                            </form>
+                        </section>
 
-                    <!-- Información de Pago -->
-                    <section>
-                        <h4>Información de Pago</h4>
-                        <form action="" method="POST">
-                            <div>
-                                <label for="numero-tarjeta">Número de Tarjeta:</label>
-                                <input type="text" id="numero-tarjeta" name="numero-tarjeta" minlength="16" maxlength="16" required>
-                            </div>
-                            <div>
-                                <label for="fecha-vencimiento">Fecha de Vencimiento:</label>
-                                <input type="month" id="fecha-vencimiento" name="fecha-vencimiento" required>
-                            </div>
-                            <div>
-                                <label for="cvv">CVV:</label>
-                                <input type="text" id="cvv" name="cvv" maxlength="3" required>
-                            </div>
-                            <div>
-                                <label for="nombre-tarjeta">Nombres del Titular:</label>
-                                <input type="text" id="nombre-tarjeta" name="nombre-tarjeta" required>
-                            </div>
-                            <div>
-                                <label for="apellido-tarjeta">Apellidos del Titular:</label>
-                                <input type="text" id="apellido-tarjeta" name="apellido-tarjeta" required>
-                            </div>
-                            <div>
-                                <label for="correo">Correo Electrónico:</label>
-                                <input type="email" id="correo" name="correo" required>
-                            </div>
-                            <button type="submit">Guardar</button>
-                        </form>
-                    </section>
+                        <!-- Información de Pago -->
+                        <section>
+                            <h4>Información de Pago</h4>
+                            <form action="" method="POST">
+                                <!-- Número de Tarjeta con la imagen de Visa -->
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <input type="text" id="numero-tarjeta" name="numero-tarjeta" maxlength="16" pattern="\d{16}" required>
+                                    <img src="logo-visa.jpg" alt="Logo Visa" style="width: 50px; height: auto;">
+                                </div>
+                                <div>
+                                    <label for="fecha-vencimiento">Fecha de Vencimiento:</label>
+                                    <input type="month" id="fecha-vencimiento" name="fecha-vencimiento" required>
+                                </div>
+                                <div>
+                                    <label for="cvv">CVV:</label>
+                                    <input type="text" id="cvv" name="cvv" maxlength="3" pattern="\d{3}" required>
+                                </div>
+                                <div>
+                                    <label for="nombre-tarjeta">Nombres del Titular:</label>
+                                    <input type="text" id="nombre-tarjeta" name="nombre-tarjeta" required>
+                                </div>
+                                <div>
+                                    <label for="apellido-tarjeta">Apellidos del Titular:</label>
+                                    <input type="text" id="apellido-tarjeta" name="apellido-tarjeta" required>
+                                </div>
+                                <div>
+                                    <label for="correo">Correo Electrónico:</label>
+                                    <input type="email" id="correo" name="correo" required>
+                                </div>
+                                <button type="submit">Guardar</button>
+                            </form>
+                        </section>
+
+                    </div>
 
                     <!-- Confirmar Pedido -->
                     <section class="confirmar-pedido">

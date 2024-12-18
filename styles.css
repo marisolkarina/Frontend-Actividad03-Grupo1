@@ -740,6 +740,22 @@ header {
     width: 100%;
 }
 
+.envioPago {
+    display: flex;
+    flex-direction: column;
+}
+.confirmar-pedido form {
+    display: flex;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .envioPago {
+        flex-direction: row;
+        gap: 10px;
+    }
+}
+
 /* ---------------------------
    Estilos para REGISTRO
 --------------------------- */
